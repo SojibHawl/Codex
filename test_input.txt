@@ -1,0 +1,25 @@
+Here is some sample text to test the redaction tool!
+
+John Smith works at ABC Company. You can reach him at john.smith@email.com or call (555) 123-4567.
+
+His colleague Mary Johnson lives in New York and her IP address at work is 192.168.1.100.
+
+For payments, use credit card 4532-1234-5678-9012 (expires 12/25/2024).
+
+Visit our website at https://www.example.com for more information.
+
+The meeting is scheduled for January 15, 2024 in Los Angeles.
+
+Contact Dr. Robert Williams at robert.williams@hospital.org or 1-800-555-0199.
+
+Our server is located at IP 10.0.0.1 in the Chicago data center.
+
+Sarah Davis from San Francisco sent an email to support@company.com on 03/20/2024.
+
+The payment of $500 was processed using card number 5555 4444 3333 2222.
+
+For urgent matters, call Michael Brown at +1 (212) 555-7890 or visit www.urgenthelp.org.
+
+The office address is 123 Main Street, Boston, Massachusetts 02101.
+
+Please contact Patricia Miller (patricia.m@work.net) before 06-15-2024.

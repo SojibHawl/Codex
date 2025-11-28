@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Redaction Tool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🔒 Text Redaction Tool</h1>
+        <p class="subtitle">Remove sensitive information from your text easily!</p>
+
+        <!-- Mode Selection -->
+        <div class="mode-section">
+            <h3>Choose Mode:</h3>
+            <label>
+                <input type="radio" name="mode" value="redact" checked> 
+                <span>Redact Mode</span> (completely remove sensitive info)
+            </label>
+            <label>
+                <input type="radio" name="mode" value="mask"> 
+                <span>Mask Mode</span> (replace with [ENTITY_TYPE])
+            </label>
+        </div>
+
+        <!-- Input Section -->
+        <div class="input-section">
+            <h3>📝 Enter Your Text:</h3>
+            <textarea id="inputText" placeholder="Type or paste your text here... 
+
+Example: John Smith's phone number is (212) 555-1234 and his email is john@gmail.com"></textarea>
+            
+            <div class="file-upload">
+                <p>Or upload a text file:</p>
+                <input type="file" id="fileInput" accept=".txt">
+            </div>
+
+            <button id="redactBtn" onclick="processText()">🚀 Redact Text</button>
+            <button id="clearBtn" onclick="clearAll()">🗑️ Clear All</button>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output-section">
+            <h3>📄 Results:</h3>
+            
+            <div class="results-container">
+                <div class="result-box">
+                    <h4>Original Text:</h4>
+                    <div id="originalOutput" class="output-box"></div>
+                </div>
+                
+                <div class="result-box">
+                    <h4>Redacted Text:</h4>
+                    <div id="redactedOutput" class="output-box"></div>
+                </div>
+            </div>
+
+            <!-- Accuracy Score -->
+            <div class="accuracy-section">
+                <h4>📊 Accuracy Score (Levenshtein Similarity):</h4>
+                <div id="accuracyScore" class="score-display">--%</div>
+                <p class="score-info">This shows how much text was changed. Lower % = more redaction done.</p>
+            </div>
+        </div>
+
+        <!-- Entity Table -->
+        <div class="entity-section">
+            <h3>📋 Detected Entities:</h3>
+            <table id="entityTable">
+                <thead>
+                    <tr>
+                        <th>Entity Type</th>
+                        <th>Extracted Text</th>
+                        <th>Start Index</th>
+                        <th>End Index</th>
+                    </tr>
+                </thead>
+                <tbody id="entityTableBody">
+                    <!-- entities will be added here -->
+                </tbody>
+            </table>
+            <p id="noEntities" class="no-entities">No entities detected yet. Enter some text and click Redact!</p>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <h3>📈 Summary:</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number" id="totalEntities">0</span>
+                    <span class="stat-label">Total Entities Found</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="personCount">0</span>
+                    <span class="stat-label">Persons</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="emailCount">0</span>
+                    <span class="stat-label">Emails</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="phoneCount">0</span>
+                    <span class="stat-label">Phone Numbers</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
