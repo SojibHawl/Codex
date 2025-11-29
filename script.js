@@ -37,12 +37,17 @@ const commonNames = [
     'liam', 'noah', 'oliver', 'elijah', 'lucas', 'mason', 'logan', 'alexander', 'ethan', 'jacob',
     'daniel', 'matthew', 'henry', 'sebastian', 'jack', 'aiden', 'owen', 'samuel', 'ryan', 'nathan',
     'alice', 'anna', 'emily', 'grace', 'lily', 'chloe', 'zoe', 'hannah', 'natalie', 'victoria',
-    'mr', 'mrs', 'ms', 'dr', 'prof'
+    'mr', 'mrs', 'ms', 'dr', 'prof',
+    // South Asian names
+    'apon', 'rahim', 'karim', 'fatima', 'ayesha', 'mohammad', 'ahmed', 'ali', 'khan', 'hasan',
+    'rahman', 'islam', 'hossain', 'begum', 'akter', 'khatun', 'sultana', 'miah', 'uddin', 'alam',
+    'riya', 'priya', 'arjun', 'amit', 'raj', 'sanjay', 'vikram', 'anita', 'sunita', 'kavita',
+    'rahul', 'deepak', 'suresh', 'mahesh', 'ganesh', 'krishna', 'shiva', 'lakshmi', 'durga', 'parvati'
 ];
 
 // Common locations list
 const commonLocations = [
-    'new york', 'Bangladesh', 'los angeles', 'chicago', 'houston', 'phoenix', 'philadelphia', 'san antonio', 'san diego',
+    'new york', 'los angeles', 'chicago', 'houston', 'phoenix', 'philadelphia', 'san antonio', 'san diego',
     'dallas', 'san jose', 'austin', 'jacksonville', 'fort worth', 'columbus', 'charlotte', 'seattle',
     'denver', 'boston', 'detroit', 'nashville', 'portland', 'las vegas', 'baltimore', 'louisville',
     'milwaukee', 'albuquerque', 'tucson', 'fresno', 'sacramento', 'atlanta', 'miami', 'oakland',
@@ -50,7 +55,19 @@ const commonLocations = [
     'california', 'texas', 'florida', 'new jersey', 'illinois', 'pennsylvania', 'ohio', 'georgia',
     'north carolina', 'michigan', 'usa', 'uk', 'canada', 'australia', 'germany', 'france', 'japan',
     'india', 'china', 'brazil', 'mexico', 'spain', 'italy', 'russia', 'south korea', 'netherlands',
-    'street', 'avenue', 'road', 'boulevard', 'drive', 'lane', 'court', 'place', 'way', 'circle'
+    'street', 'avenue', 'road', 'boulevard', 'drive', 'lane', 'court', 'place', 'way', 'circle',
+    // South Asian locations
+    'bangladesh', 'dhaka', 'chittagong', 'khulna', 'rajshahi', 'sylhet', 'rangpur', 'barisal', 'comilla',
+    'gazipur', 'narayanganj', 'mymensingh', 'bogra', 'cox\'s bazar', 'jessore', 'dinajpur', 'tangail',
+    'pakistan', 'karachi', 'lahore', 'islamabad', 'rawalpindi', 'faisalabad', 'multan', 'peshawar',
+    'delhi', 'mumbai', 'kolkata', 'chennai', 'bangalore', 'hyderabad', 'pune', 'ahmedabad', 'jaipur',
+    'nepal', 'kathmandu', 'sri lanka', 'colombo', 'bhutan', 'thimphu', 'maldives', 'male',
+    // More world cities
+    'singapore', 'hong kong', 'beijing', 'shanghai', 'bangkok', 'jakarta', 'manila', 'hanoi', 'seoul',
+    'cairo', 'lagos', 'johannesburg', 'nairobi', 'cape town', 'casablanca', 'addis ababa',
+    'moscow', 'istanbul', 'tehran', 'riyadh', 'doha', 'abu dhabi', 'kuwait', 'muscat', 'jerusalem',
+    'vienna', 'zurich', 'geneva', 'brussels', 'copenhagen', 'oslo', 'stockholm', 'helsinki', 'dublin',
+    'athens', 'lisbon', 'prague', 'warsaw', 'budapest', 'bucharest', 'sofia', 'belgrade', 'zagreb'
 ];
 
 // ========================================
@@ -173,15 +190,41 @@ function findPersons(text) {
         let word = words[i];
         let cleanWord = word.replace(/[^a-zA-Z]/g, '').toLowerCase();
         
+        // Skip empty words or very short words
+        if (cleanWord.length < 2) continue;
+        
         // Find the actual position in text
         let wordStart = text.indexOf(word, currentIndex);
         if (wordStart === -1) continue;
         
         currentIndex = wordStart + word.length;
         
-        // Check if it's a name (starts with capital and in our list)
+        // Check if it's a name (starts with capital letter)
         if (word[0] && word[0] === word[0].toUpperCase() && word[0] !== word[0].toLowerCase()) {
-            if (commonNames.includes(cleanWord)) {
+            // Check if it's in our common names list
+            let isKnownName = commonNames.includes(cleanWord);
+            
+            // Also detect capitalized words that look like names (not common English words)
+            // A word is likely a name if: starts with capital, not all caps, not a common word
+            let commonWords = ['the', 'and', 'but', 'for', 'are', 'was', 'were', 'been', 'have', 'has', 
+                               'had', 'will', 'would', 'could', 'should', 'may', 'might', 'must', 'can',
+                               'this', 'that', 'these', 'those', 'what', 'which', 'who', 'whom', 'whose',
+                               'where', 'when', 'why', 'how', 'all', 'each', 'every', 'both', 'few', 'more',
+                               'most', 'other', 'some', 'such', 'only', 'own', 'same', 'than', 'too', 'very',
+                               'just', 'also', 'now', 'here', 'there', 'then', 'once', 'always', 'never',
+                               'live', 'lives', 'living', 'lived', 'work', 'works', 'working', 'worked'];
+            
+            let isCommonWord = commonWords.includes(cleanWord);
+            
+            // Check if word is not at the beginning of a sentence (more likely to be a name)
+            let charBefore = wordStart > 0 ? text[wordStart - 1] : '';
+            let isStartOfSentence = wordStart === 0 || /[.!?]\s*$/.test(text.substring(0, wordStart).trim());
+            
+            // Heuristic: if it's capitalized and not a common word, it might be a name
+            // If it's at start of sentence, only consider it if it's a known name
+            let isPotentialName = isKnownName || (!isCommonWord && !isStartOfSentence && cleanWord.length >= 3);
+            
+            if (isPotentialName) {
                 // Check if next word is also a name (for full names like "John Smith")
                 let fullName = word;
                 let endIndex = wordStart + word.length;
@@ -283,6 +326,28 @@ function findLocations(text) {
                     endIndex: match.index + match[0].length
                 });
             }
+        }
+    }
+    
+    // NEW: Detect single capitalized words preceded by location indicators (e.g., "in Dhaka", "from Berlin")
+    let locationIndicatorPattern = /\b(in|from|at|near|to|towards|via|through)\s+([A-Z][a-z]{2,})\b/g;
+    
+    while ((match = locationIndicatorPattern.exec(text)) !== null) {
+        let locationWord = match[2];
+        let locationStart = match.index + match[0].indexOf(locationWord);
+        let locationEnd = locationStart + locationWord.length;
+        
+        // Check it's not already a known person name (to avoid false positives)
+        let lowerWord = locationWord.toLowerCase();
+        let isKnownName = commonNames.includes(lowerWord);
+        
+        if (!isKnownName) {
+            detectedEntities.push({
+                type: 'LOCATION',
+                text: locationWord,
+                startIndex: locationStart,
+                endIndex: locationEnd
+            });
         }
     }
 }
