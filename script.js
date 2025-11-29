@@ -212,10 +212,11 @@ function findPersons(text) {
     }
 }
 
-// Find locations
+// Find locations - Enhanced to detect various location formats
 function findLocations(text) {
     let lowerText = text.toLowerCase();
     
+    // First, search predefined common locations
     for (let location of commonLocations) {
         let searchIndex = 0;
         let foundIndex;
@@ -239,6 +240,49 @@ function findLocations(text) {
             }
             
             searchIndex = foundIndex + 1;
+        }
+    }
+    
+    // Enhanced: Detect location patterns (City names, country names, etc.)
+    // Pattern: Capitalized words followed by keywords like "city", "state", "zone", "province", "district", "county"
+    let locationKeywords = ['city', 'state', 'zone', 'province', 'district', 'county', 'region', 'area', 'territory', 'nation', 'country'];
+    let locationPattern = /([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\s+(?:city|state|zone|province|district|county|region|area|territory|nation|country)/gi;
+    
+    let match;
+    while ((match = locationPattern.exec(text)) !== null) {
+        detectedEntities.push({
+            type: 'LOCATION',
+            text: match[0],
+            startIndex: match.index,
+            endIndex: match.index + match[0].length
+        });
+    }
+    
+    // Additional pattern: Detect standalone capitalized multi-word phrases (potential location names)
+    // This catches generic location names like "New South Wales", "Sierra Leone", etc.
+    let capitalizedPhrasePattern = /\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+)+)\b/g;
+    
+    while ((match = capitalizedPhrasePattern.exec(text)) !== null) {
+        let phrase = match[1];
+        let words = phrase.split(/\s+/);
+        
+        // Only consider if it's 2-4 words (typical location names)
+        if (words.length >= 2 && words.length <= 4) {
+            // Check context - look for location indicators nearby
+            let contextStart = Math.max(0, match.index - 50);
+            let contextEnd = Math.min(text.length, match.index + match[0].length + 50);
+            let context = text.substring(contextStart, contextEnd).toLowerCase();
+            
+            let hasLocationContext = /\b(in|from|at|near|located|province|state|country|city|zone|district|region)\b/.test(context);
+            
+            if (hasLocationContext) {
+                detectedEntities.push({
+                    type: 'LOCATION',
+                    text: match[0],
+                    startIndex: match.index,
+                    endIndex: match.index + match[0].length
+                });
+            }
         }
     }
 }
