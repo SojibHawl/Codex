@@ -42,7 +42,7 @@ const baseCommonNames = [
 
 const bangladeshiNames = [
     // Common Bangladeshi male names
-    'apon', 'abdullah', 'abdur', 'abul', 'ahsan', 'akbar', 'alamgir', 'alamin', 'aminul', 'anis',
+    'apon', 'sojib', 'yasin', 'banna', 'abdullah', 'abdur', 'abul', 'ahsan', 'akbar', 'alamgir', 'alamin', 'aminul', 'anis',
     'anwar', 'arif', 'ariful', 'ashik', 'ashraf', 'ashraful', 'azad', 'babul', 'bashir', 'belal',
     'delwar', 'emon``',`` 'farhan', 'farid', 'faruk', 'faysal', 'fazle', 'habib', 'hafiz', 'hamid',
     'hasib', 'hasan', 'hasnat', 'helal', 'hossain', 'imran', 'iqbal', 'ismail', 'jahangir', 'jahid',
@@ -55,7 +55,7 @@ const bangladeshiNames = [
     'siam', 'sohan', 'subrata', 'sumon', 'sunny', 'tahmid', 'tanvir', 'tariq', 'touhid', 'wahid',
     'yasin', 'yeasin', 'zia', 'zubair',
     // Common Bangladeshi female names
-    'aisha', 'akhi', 'anika', 'ankhi', 'anwesha', 'aparna', 'arifa', 'armin', 'asma', 'ayesha',
+    'aisha', 'akhi', 'anika', 'ankhi', 'suborna', 'anwesha', 'aparna', 'arifa', 'armin', 'asma', 'ayesha',
     'azmina', 'barsha', 'bristi', 'dilruba', 'dipa', 'farhana', 'farzana', 'faria', 'fariha', 'fiza',
     'habiba', 'hasna', 'hosneara', 'israt', 'jahanara', 'jamila', 'jasmin', 'joba', 'jui', 'laila',
     'lamia', 'lima', 'liza', 'mahmuda', 'maisha', 'majumita', 'marjia', 'maryam', 'mehnaz', 'mim',
