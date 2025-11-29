@@ -28,7 +28,7 @@ const urlPattern = /(https?:\/\/[^\s]+)|(www\.[^\s]+)/g;
 const datePattern = /\b(\d{1,2}[-\/]\d{1,2}[-\/]\d{2,4})|(\d{4}[-\/]\d{1,2}[-\/]\d{1,2})|((Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*[\s,]+\d{1,2}[\s,]+\d{4})|(\d{1,2}[\s]+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*[\s,]+\d{4})\b/gi;
 
 // Common names list for person detection (simple approach)
-const commonNames = [
+const baseCommonNames = [
     'james', 'john', 'robert', 'michael', 'william', 'david', 'richard', 'joseph', 'thomas', 'charles',
     'mary', 'patricia', 'jennifer', 'linda', 'elizabeth', 'barbara', 'susan', 'jessica', 'sarah', 'karen',
     'smith', 'johnson', 'williams', 'brown', 'jones', 'garcia', 'miller', 'davis', 'rodriguez', 'martinez',
@@ -37,16 +37,40 @@ const commonNames = [
     'liam', 'noah', 'oliver', 'elijah', 'lucas', 'mason', 'logan', 'alexander', 'ethan', 'jacob',
     'daniel', 'matthew', 'henry', 'sebastian', 'jack', 'aiden', 'owen', 'samuel', 'ryan', 'nathan',
     'alice', 'anna', 'emily', 'grace', 'lily', 'chloe', 'zoe', 'hannah', 'natalie', 'victoria',
-    'mr', 'mrs', 'ms', 'dr', 'prof',
-    // South Asian names
-    'apon', 'rahim', 'karim', 'fatima', 'ayesha', 'mohammad', 'ahmed', 'ali', 'khan', 'hasan',
-    'rahman', 'islam', 'hossain', 'begum', 'akter', 'khatun', 'sultana', 'miah', 'uddin', 'alam',
-    'riya', 'priya', 'arjun', 'amit', 'raj', 'sanjay', 'vikram', 'anita', 'sunita', 'kavita',
-    'rahul', 'deepak', 'suresh', 'mahesh', 'ganesh', 'krishna', 'shiva', 'lakshmi', 'durga', 'parvati'
+    'mr', 'mrs', 'ms', 'dr', 'prof'
 ];
 
+const bangladeshiNames = [
+    // Common Bangladeshi male names
+    'apon', 'abdullah', 'abdur', 'abul', 'ahsan', 'akbar', 'alamgir', 'alamin', 'aminul', 'anis',
+    'anwar', 'arif', 'ariful', 'ashik', 'ashraf', 'ashraful', 'azad', 'babul', 'bashir', 'belal',
+    'delwar', 'emon``',`` 'farhan', 'farid', 'faruk', 'faysal', 'fazle', 'habib', 'hafiz', 'hamid',
+    'hasib', 'hasan', 'hasnat', 'helal', 'hossain', 'imran', 'iqbal', 'ismail', 'jahangir', 'jahid',
+    'jalal', 'jamal', 'jasim', 'javed', 'jewel', 'jihan', 'kabir', 'kamal', 'karim', 'kawsar',
+    'liton', 'lutfur', 'mamun', 'maruf', 'mehedi', 'minhaz', 'miraz', 'mohiuddin', 'moin', 'monir',
+    'morshed', 'moshiur', 'mostafa', 'mustafa', 'nahid', 'nasir', 'nazmul', 'noman', 'nurul', 'omar',
+    'parvez', 'rakib', 'rasel', 'razzak', 'razib', 'rezaul', 'ridwan', 'riyad', 'saad', 'sabbir',
+    'sadiq', 'safwan', 'sagor', 'sajid', 'sakib', 'salman', 'samin', 'sayem', 'shafayet', 'shahid',
+    'shahin', 'shakil', 'shamim', 'shanto', 'sharif', 'shawon', 'sheikh', 'shihab', 'shohel', 'shuvo',
+    'siam', 'sohan', 'subrata', 'sumon', 'sunny', 'tahmid', 'tanvir', 'tariq', 'touhid', 'wahid',
+    'yasin', 'yeasin', 'zia', 'zubair',
+    // Common Bangladeshi female names
+    'aisha', 'akhi', 'anika', 'ankhi', 'anwesha', 'aparna', 'arifa', 'armin', 'asma', 'ayesha',
+    'azmina', 'barsha', 'bristi', 'dilruba', 'dipa', 'farhana', 'farzana', 'faria', 'fariha', 'fiza',
+    'habiba', 'hasna', 'hosneara', 'israt', 'jahanara', 'jamila', 'jasmin', 'joba', 'jui', 'laila',
+    'lamia', 'lima', 'liza', 'mahmuda', 'maisha', 'majumita', 'marjia', 'maryam', 'mehnaz', 'mim',
+    'momena', 'mubasshira', 'munmun', 'nafisa', 'nafisat', 'naila', 'namira', 'nasima', 'nasrin', 'nazia',
+    'nishat', 'nishita', 'nitu', 'nowshin', 'nusrat', 'omaima', 'pinky', 'poly', 'popy', 'priya',
+    'raisa', 'ratna', 'rezwana', 'rima', 'rina', 'rija', 'riti', 'roma', 'rozina', 'sadia',
+    'sadika', 'sajib', 'shabnam', 'shama', 'shanta', 'shathi', 'sheela', 'shirin', 'shopna', 'sima',
+    'sumaiya', 'sumona', 'susmita', 'tahira', 'tanjila', 'tanjina', 'tanuka', 'tasfia', 'tashfia', 'tasmia',
+    'tasmim', 'tithi', 'tuli', 'umama', 'yesmin', 'yumna', 'zarin', 'zeba', 'zeenat'
+];
+
+const commonNames = [...baseCommonNames, ...bangladeshiNames];
+
 // Common locations list
-const commonLocations = [
+const baseCommonLocations = [
     'new york', 'los angeles', 'chicago', 'houston', 'phoenix', 'philadelphia', 'san antonio', 'san diego',
     'dallas', 'san jose', 'austin', 'jacksonville', 'fort worth', 'columbus', 'charlotte', 'seattle',
     'denver', 'boston', 'detroit', 'nashville', 'portland', 'las vegas', 'baltimore', 'louisville',
@@ -56,19 +80,42 @@ const commonLocations = [
     'north carolina', 'michigan', 'usa', 'uk', 'canada', 'australia', 'germany', 'france', 'japan',
     'india', 'china', 'brazil', 'mexico', 'spain', 'italy', 'russia', 'south korea', 'netherlands',
     'street', 'avenue', 'road', 'boulevard', 'drive', 'lane', 'court', 'place', 'way', 'circle',
-    // South Asian locations
-    'bangladesh', 'dhaka', 'chittagong', 'khulna', 'rajshahi', 'sylhet', 'rangpur', 'barisal', 'comilla',
-    'gazipur', 'narayanganj', 'mymensingh', 'bogra', 'cox\'s bazar', 'jessore', 'dinajpur', 'tangail',
     'pakistan', 'karachi', 'lahore', 'islamabad', 'rawalpindi', 'faisalabad', 'multan', 'peshawar',
     'delhi', 'mumbai', 'kolkata', 'chennai', 'bangalore', 'hyderabad', 'pune', 'ahmedabad', 'jaipur',
     'nepal', 'kathmandu', 'sri lanka', 'colombo', 'bhutan', 'thimphu', 'maldives', 'male',
-    // More world cities
     'singapore', 'hong kong', 'beijing', 'shanghai', 'bangkok', 'jakarta', 'manila', 'hanoi', 'seoul',
     'cairo', 'lagos', 'johannesburg', 'nairobi', 'cape town', 'casablanca', 'addis ababa',
     'moscow', 'istanbul', 'tehran', 'riyadh', 'doha', 'abu dhabi', 'kuwait', 'muscat', 'jerusalem',
     'vienna', 'zurich', 'geneva', 'brussels', 'copenhagen', 'oslo', 'stockholm', 'helsinki', 'dublin',
     'athens', 'lisbon', 'prague', 'warsaw', 'budapest', 'bucharest', 'sofia', 'belgrade', 'zagreb'
 ];
+
+const bangladeshiLocations = [
+    // Country and divisions
+    'bangladesh', 'dhaka division', 'chattogram division', 'rajshahi division', 'khulna division',
+    'barishal division', 'sylhet division', 'rangpur division', 'mymensingh division',
+    // Districts (64)
+    'bagerhat', 'bandarban', 'barguna', 'barishal', 'barisal', 'bhola', 'bogura', 'brahmanbaria',
+    'chandpur', 'chapainawabganj', 'chattogram', 'chuadanga', 'cox\'s bazar', 'coxs bazar', 'cumilla',
+    'comilla', 'dhaka', 'dinajpur', 'faridpur', 'feni', 'gaibandha', 'gazipur', 'gopalganj',
+    'habiganj', 'jamalpur', 'jashore', 'jessore', 'jhalokathi', 'jhalakathi', 'jhenaidah', 'joypurhat',
+    'khagrachari', 'khagrachhari', 'khulna', 'kishoreganj', 'kurigram', 'kushtia', 'lakshmipur',
+    'lalmonirhat', 'madaripur', 'magura', 'manikganj', 'meherpur', 'moulvibazar', 'munshiganj',
+    'mymensingh', 'naogaon', 'narail', 'narayanganj', 'narsingdi', 'natore', 'nawabganj', 'netrokona',
+    'nilphamari', 'noakhali', 'pabna', 'panchagarh', 'patuakhali', 'piroijpur', 'pirojpur', 'rajbari',
+    'rajshahi', 'rangamati', 'rangpur', 'satkhira', 'shariatpur', 'sherpur', 'sirajganj', 'sunamganj',
+    'sylhet', 'tangail', 'thakurgaon',
+    // Major cities and towns
+    'dhaka city', 'chattogram city', 'khulna city', 'rajshahi city', 'barishal city', 'sylhet city',
+    'rangpur city', 'mymensingh city', 'gazipur city', 'narayanganj city', 'cumilla city', 'bogura city',
+    'jashore city', 'noakhali town', 'feni town', 'pabna town', 'satkhira town', 'manikganj town',
+    // Notable suburbs and landmarks
+    'uttara', 'mirpur', 'banani', 'gulshan', 'dhanmondi', 'motijheel', 'badda', 'keraniganj', 'savar',
+    'ashulia', 'tonggi', 'tongi', 'narshingdi', 'uttarkhan', 'dakshinkhan', 'joydebpur', 'bhairab',
+    'mawa', 'sonargaon', 'patenga', 'agrabad', 'khulshi', 'halishahar'
+];
+
+const commonLocations = [...baseCommonLocations, ...bangladeshiLocations];
 
 // ========================================
 // MAIN FUNCTION - Process the text
