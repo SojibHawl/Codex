@@ -42,37 +42,45 @@ const baseCommonNames = [
 
 const bdMaleNames = [
     'abul', 'abdullah', 'abdur', 'adnan', 'afzal', 'ahad', 'ahmed', 'ahsan', 'akbar', 'akram', 'alamgir', 'alamin',
-    'ali', 'alif', 'amin', 'aminul', 'anis', 'anwar', 'apon', 'arafat', 'arif', 'ariful', 'arman', 'ashik', 'ashraf',
-    'ashraful', 'atif', 'awlad', 'azad', 'babul', 'banna', 'bashir', 'belal', 'billal', 'delwar', 'emon', 'easin',
-    'fahim', 'faisal', 'farhan', 'farid', 'faruk', 'faysal', 'fazle', 'fazlul', 'firoz', 'golam', 'habib', 'hafiz',
-    'halim', 'hamid', 'hasan', 'hasib', 'hasnat', 'helal', 'hossain', 'imran', 'iqbal', 'ismail', 'jahangir', 'jahid',
-    'jalal', 'jamal', 'jasim', 'javed', 'jewel', 'jihan', 'kabir', 'kais', 'kamal', 'karim', 'kawsar', 'liton', 'mahmud',
-    'mamun', 'manik', 'maruf', 'mehedi', 'minhaz', 'miraz', 'mizan', 'mohiuddin', 'moin', 'monir', 'morshed',
-    'mosharraf', 'moshiur', 'mostafa', 'mostofa', 'mustafiz', 'nahid', 'nasir', 'nazim', 'nazmul', 'noman', 'nur',
-    'nurul', 'omar', 'parvez', 'rakib', 'rasel', 'razzak', 'razib', 'rezaul', 'ridwan', 'riyad', 'saad', 'sabbir',
-    'sadiq', 'safwan', 'sagor', 'sajid', 'sakib', 'salman', 'samin', 'sanzid', 'sayem', 'shafayet', 'shafiq', 'shahid',
-    'shahin', 'shakil', 'shamim', 'shanto', 'sharif', 'shawon', 'sheikh', 'shihab', 'shohel', 'shuvo', 'siam', 'sohan',
-    'sojib', 'subrata', 'sumon', 'sunny', 'tahmid', 'tanbir', 'tanvir', 'tariq', 'tasnim', 'touhid', 'wahid', 'yasin',
-    'yeasin', 'zia', 'zubair'
+    'ali', 'alif', 'amin', 'aminul', 'anis', 'anwar', 'apon', 'arafat', 'arif', 'ariful', 'arman', 'arshad', 'ashfaq',
+    'ashik', 'ashraf', 'ashraful', 'atif', 'awlad', 'ayman', 'azad', 'babul', 'banna', 'bashir', 'belal', 'billal',
+    'biplob', 'bulbul', 'delwar', 'emon', 'emran', 'easin', 'fahim', 'faisal', 'fardin', 'farhan', 'farid', 'faruq',
+    'faruk', 'faysal', 'fazle', 'fazlul', 'fida', 'firoz', 'furkan', 'golam', 'habib', 'habibur', 'hafiz', 'halim',
+    'hamid', 'hasan', 'hasib', 'hasibur', 'hasnat', 'helal', 'hossain', 'iftekhar', 'imran', 'iqbal', 'ismail',
+    'jahangir', 'jahid', 'jalal', 'jamal', 'jasim', 'javed', 'jewel', 'jihan', 'jibon', 'kabir', 'kais', 'kamal',
+    'karim', 'kaiser', 'kawsar', 'khaled', 'labib', 'liton', 'mahmud', 'mahmudul', 'mahbub', 'mamun', 'manik', 'maruf',
+    'masud', 'masum', 'mehedi', 'minhaz', 'miraz', 'mizan', 'moazzem', 'mohiuddin', 'moin', 'monir', 'morshed',
+    'mosharraf', 'moshiur', 'mostafa', 'mostofa', 'mustafiz', 'naeem', 'nahid', 'nasif', 'nasir', 'nazim', 'nazmul',
+    'nayeem', 'noman', 'nur', 'nurul', 'omar', 'owahid', 'parvez', 'rafsan', 'rahat', 'raihaan', 'raihan', 'rakib',
+    'rakibul', 'rasel', 'rashed', 'razzak', 'razib', 'redwan', 'rezaul', 'ridwan', 'riyad', 'riyadh', 'saad', 'sabbir',
+    'sadiq', 'safwan', 'sagor', 'sajib', 'sajid', 'sajjad', 'sakib', 'salman', 'samin', 'sanzid', 'sayem', 'sazzad',
+    'shadman', 'shafayet', 'shafiq', 'shafiullah', 'shahid', 'shahin', 'shahadat', 'shahriar', 'shakil', 'shamim',
+    'shamol', 'shanto', 'sharif', 'shariful', 'shawon', 'sheikh', 'shihab', 'shipon', 'shishir', 'shohel', 'shourov',
+    'shuvo', 'siam', 'sohan', 'sojib', 'subrata', 'sumon', 'sunny', 'tahmid', 'tanzim', 'tanbir', 'tanvir', 'tariq',
+    'tawhid', 'tawsif', 'tasnim', 'tuhin', 'touhid', 'wahid', 'wahidur', 'wasim', 'yasin', 'yeasin', 'yousuf', 'zahid',
+    'zahur', 'zaman', 'zia', 'zubair'
 ];
 
 const bdFemaleNames = [
-    'aisha', 'akhi', 'akmila', 'anika', 'anjana', 'ankhi', 'anwesha', 'aparna', 'arifa', 'armin', 'asma', 'ayesha',
-    'azmina', 'barsha', 'bristi', 'dilruba', 'dipa', 'disha', 'farhana', 'farjana', 'farzana', 'faria', 'fariha',
-    'fiza', 'hafsa', 'habiba', 'halima', 'hasna', 'hosneara', 'israt', 'jahanara', 'jamila', 'jasmin', 'joba', 'jui',
-    'kulsum', 'laila', 'lamia', 'lima', 'liza', 'mahmuda', 'maisha', 'majumita', 'marjia', 'maryam', 'mehnaz', 'mim',
-    'momena', 'mubasshira', 'munmun', 'nafisa', 'nafisat', 'naila', 'namira', 'nasima', 'nasrin', 'nazia', 'nishat',
-    'nishita', 'nitu', 'nowshin', 'nusrat', 'omaima', 'pinky', 'poly', 'popy', 'prapti', 'priya', 'raisa', 'ratna',
-    'rezwana', 'rima', 'rina', 'rija', 'riti', 'roma', 'rozina', 'sadia', 'sadika', 'safiya', 'sajeda', 'shabnam',
-    'shama', 'shanta', 'shathi', 'sheela', 'shirin', 'shopna', 'sima', 'simran', 'sumaiya', 'sumona', 'susmita',
-    'tahira', 'tanjila', 'tanjina', 'tanuka', 'tasfia', 'tashfia', 'tasmia', 'tasmim', 'tithi', 'tuli', 'umama',
-    'yesmin', 'yumna', 'zarin', 'zeba', 'zeenat'
+    'aditi', 'aisha', 'airin', 'akhi', 'akmila', 'anika', 'anjana', 'ankhi', 'anjum', 'anwesha', 'aparna', 'arifa',
+    'arisha', 'armin', 'asma', 'ayesha', 'azmina', 'barsha', 'bonna', 'bristi', 'dilruba', 'dipa', 'disha', 'doya',
+    'farhana', 'farjana', 'farzana', 'faria', 'fariha', 'fida', 'fiza', 'falguni', 'firdaus', 'hafsa', 'habiba',
+    'halima', 'hasina', 'hasna', 'hosneara', 'ishita', 'israt', 'jahanara', 'jamila', 'jasmin', 'joba', 'jui',
+    'karishma', 'kulsum', 'laila', 'lamia', 'lima', 'lira', 'liza', 'mahmuda', 'maisha', 'majumita', 'makhnun', 'marjia',
+    'maryam', 'maisha', 'mehnaz', 'menoka', 'mim', 'mitali', 'momena', 'mubasshira', 'munmun', 'nafisa', 'nafisat',
+    'nadia', 'naila', 'namira', 'nasima', 'nasrin', 'nawsin', 'nazia', 'nilofer', 'nishat', 'nishita', 'nitu', 'noumi',
+    'nowshin', 'nusrat', 'omaima', 'pinky', 'poly', 'popy', 'prapti', 'purnima', 'priya', 'raisa', 'ratna', 'rechna',
+    'rezwana', 'rima', 'rina', 'rija', 'riti', 'roma', 'romana', 'rozina', 'rumana', 'sadia', 'sadika', 'safiya',
+    'sajeda', 'sabina', 'sadhika', 'sahana', 'shabnam', 'shama', 'shanta', 'shathi', 'sheela', 'shirin', 'shopna',
+    'sima', 'simran', 'sumaiya', 'sumona', 'susmita', 'tahira', 'tanjila', 'tanjina', 'tanuka', 'tasfia', 'tashfia',
+    'tasmia', 'tasmim', 'tithi', 'tuli', 'umama', 'yesmin', 'yumna', 'zareen', 'zarin', 'zeba', 'zeenat'
 ];
 
 const bdFamilyNames = [
-    'ahmed', 'ali', 'amin', 'ashraf', 'azada', 'bari', 'chowdhury', 'dutta', 'faruqi', 'haque', 'hasan', 'hossain',
-    'islam', 'kabir', 'khan', 'mirza', 'mollah', 'mondal', 'munshi', 'niazi', 'patwary', 'rahman', 'rahim', 'saha',
-    'sarker', 'shaikh', 'sheikh', 'talukdar', 'ullah', 'uddin'
+    'ahmed', 'ali', 'amin', 'ashraf', 'azada', 'bari', 'barua', 'bhuiyan', 'bhuyan', 'biswas', 'chandra', 'chowdhury',
+    'debnath', 'dutta', 'faruqi', 'gazi', 'haque', 'hasan', 'hossain', 'huda', 'islam', 'kabir', 'khan', 'majumdar',
+    'miah', 'mirza', 'mitra', 'mollah', 'mondal', 'mridha', 'munshi', 'niazi', 'pal', 'patwary', 'rahman', 'rahim',
+    'roy', 'saha', 'sarker', 'sengupta', 'shaikh', 'sheikh', 'sikder', 'talukdar', 'talukder', 'ullah', 'uddin'
 ];
 
 const bangladeshiNames = Array.from(new Set([...bdMaleNames, ...bdFemaleNames, ...bdFamilyNames]));
