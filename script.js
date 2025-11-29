@@ -40,32 +40,42 @@ const baseCommonNames = [
     'mr', 'mrs', 'ms', 'dr', 'prof'
 ];
 
-const bangladeshiNames = [
-    // Common Bangladeshi male names
-    'apon', 'sojib', 'yasin', 'banna', 'abdullah', 'abdur', 'abul', 'ahsan', 'akbar', 'alamgir', 'alamin', 'aminul', 'anis',
-    'anwar', 'arif', 'ariful', 'ashik', 'ashraf', 'ashraful', 'azad', 'babul', 'bashir', 'belal',
-    'delwar', 'emon``',`` 'farhan', 'farid', 'faruk', 'faysal', 'fazle', 'habib', 'hafiz', 'hamid',
-    'hasib', 'hasan', 'hasnat', 'helal', 'hossain', 'imran', 'iqbal', 'ismail', 'jahangir', 'jahid',
-    'jalal', 'jamal', 'jasim', 'javed', 'jewel', 'jihan', 'kabir', 'kamal', 'karim', 'kawsar',
-    'liton', 'lutfur', 'mamun', 'maruf', 'mehedi', 'minhaz', 'miraz', 'mohiuddin', 'moin', 'monir',
-    'morshed', 'moshiur', 'mostafa', 'mustafa', 'nahid', 'nasir', 'nazmul', 'noman', 'nurul', 'omar',
-    'parvez', 'rakib', 'rasel', 'razzak', 'razib', 'rezaul', 'ridwan', 'riyad', 'saad', 'sabbir',
-    'sadiq', 'safwan', 'sagor', 'sajid', 'sakib', 'salman', 'samin', 'sayem', 'shafayet', 'shahid',
-    'shahin', 'shakil', 'shamim', 'shanto', 'sharif', 'shawon', 'sheikh', 'shihab', 'shohel', 'shuvo',
-    'siam', 'sohan', 'subrata', 'sumon', 'sunny', 'tahmid', 'tanvir', 'tariq', 'touhid', 'wahid',
-    'yasin', 'yeasin', 'zia', 'zubair',
-    // Common Bangladeshi female names
-    'aisha', 'akhi', 'anika', 'ankhi', 'suborna', 'anwesha', 'aparna', 'arifa', 'armin', 'asma', 'ayesha',
-    'azmina', 'barsha', 'bristi', 'dilruba', 'dipa', 'farhana', 'farzana', 'faria', 'fariha', 'fiza',
-    'habiba', 'hasna', 'hosneara', 'israt', 'jahanara', 'jamila', 'jasmin', 'joba', 'jui', 'laila',
-    'lamia', 'lima', 'liza', 'mahmuda', 'maisha', 'majumita', 'marjia', 'maryam', 'mehnaz', 'mim',
-    'momena', 'mubasshira', 'munmun', 'nafisa', 'nafisat', 'naila', 'namira', 'nasima', 'nasrin', 'nazia',
-    'nishat', 'nishita', 'nitu', 'nowshin', 'nusrat', 'omaima', 'pinky', 'poly', 'popy', 'priya',
-    'raisa', 'ratna', 'rezwana', 'rima', 'rina', 'rija', 'riti', 'roma', 'rozina', 'sadia',
-    'sadika', 'sajib', 'shabnam', 'shama', 'shanta', 'shathi', 'sheela', 'shirin', 'shopna', 'sima',
-    'sumaiya', 'sumona', 'susmita', 'tahira', 'tanjila', 'tanjina', 'tanuka', 'tasfia', 'tashfia', 'tasmia',
-    'tasmim', 'tithi', 'tuli', 'umama', 'yesmin', 'yumna', 'zarin', 'zeba', 'zeenat'
+const bdMaleNames = [
+    'abul', 'abdullah', 'abdur', 'adnan', 'afzal', 'ahad', 'ahmed', 'ahsan', 'akbar', 'akram', 'alamgir', 'alamin',
+    'ali', 'alif', 'amin', 'aminul', 'anis', 'anwar', 'apon', 'arafat', 'arif', 'ariful', 'arman', 'ashik', 'ashraf',
+    'ashraful', 'atif', 'awlad', 'azad', 'babul', 'banna', 'bashir', 'belal', 'billal', 'delwar', 'emon', 'easin',
+    'fahim', 'faisal', 'farhan', 'farid', 'faruk', 'faysal', 'fazle', 'fazlul', 'firoz', 'golam', 'habib', 'hafiz',
+    'halim', 'hamid', 'hasan', 'hasib', 'hasnat', 'helal', 'hossain', 'imran', 'iqbal', 'ismail', 'jahangir', 'jahid',
+    'jalal', 'jamal', 'jasim', 'javed', 'jewel', 'jihan', 'kabir', 'kais', 'kamal', 'karim', 'kawsar', 'liton', 'mahmud',
+    'mamun', 'manik', 'maruf', 'mehedi', 'minhaz', 'miraz', 'mizan', 'mohiuddin', 'moin', 'monir', 'morshed',
+    'mosharraf', 'moshiur', 'mostafa', 'mostofa', 'mustafiz', 'nahid', 'nasir', 'nazim', 'nazmul', 'noman', 'nur',
+    'nurul', 'omar', 'parvez', 'rakib', 'rasel', 'razzak', 'razib', 'rezaul', 'ridwan', 'riyad', 'saad', 'sabbir',
+    'sadiq', 'safwan', 'sagor', 'sajid', 'sakib', 'salman', 'samin', 'sanzid', 'sayem', 'shafayet', 'shafiq', 'shahid',
+    'shahin', 'shakil', 'shamim', 'shanto', 'sharif', 'shawon', 'sheikh', 'shihab', 'shohel', 'shuvo', 'siam', 'sohan',
+    'sojib', 'subrata', 'sumon', 'sunny', 'tahmid', 'tanbir', 'tanvir', 'tariq', 'tasnim', 'touhid', 'wahid', 'yasin',
+    'yeasin', 'zia', 'zubair'
 ];
+
+const bdFemaleNames = [
+    'aisha', 'akhi', 'akmila', 'anika', 'anjana', 'ankhi', 'anwesha', 'aparna', 'arifa', 'armin', 'asma', 'ayesha',
+    'azmina', 'barsha', 'bristi', 'dilruba', 'dipa', 'disha', 'farhana', 'farjana', 'farzana', 'faria', 'fariha',
+    'fiza', 'hafsa', 'habiba', 'halima', 'hasna', 'hosneara', 'israt', 'jahanara', 'jamila', 'jasmin', 'joba', 'jui',
+    'kulsum', 'laila', 'lamia', 'lima', 'liza', 'mahmuda', 'maisha', 'majumita', 'marjia', 'maryam', 'mehnaz', 'mim',
+    'momena', 'mubasshira', 'munmun', 'nafisa', 'nafisat', 'naila', 'namira', 'nasima', 'nasrin', 'nazia', 'nishat',
+    'nishita', 'nitu', 'nowshin', 'nusrat', 'omaima', 'pinky', 'poly', 'popy', 'prapti', 'priya', 'raisa', 'ratna',
+    'rezwana', 'rima', 'rina', 'rija', 'riti', 'roma', 'rozina', 'sadia', 'sadika', 'safiya', 'sajeda', 'shabnam',
+    'shama', 'shanta', 'shathi', 'sheela', 'shirin', 'shopna', 'sima', 'simran', 'sumaiya', 'sumona', 'susmita',
+    'tahira', 'tanjila', 'tanjina', 'tanuka', 'tasfia', 'tashfia', 'tasmia', 'tasmim', 'tithi', 'tuli', 'umama',
+    'yesmin', 'yumna', 'zarin', 'zeba', 'zeenat'
+];
+
+const bdFamilyNames = [
+    'ahmed', 'ali', 'amin', 'ashraf', 'azada', 'bari', 'chowdhury', 'dutta', 'faruqi', 'haque', 'hasan', 'hossain',
+    'islam', 'kabir', 'khan', 'mirza', 'mollah', 'mondal', 'munshi', 'niazi', 'patwary', 'rahman', 'rahim', 'saha',
+    'sarker', 'shaikh', 'sheikh', 'talukdar', 'ullah', 'uddin'
+];
+
+const bangladeshiNames = Array.from(new Set([...bdMaleNames, ...bdFemaleNames, ...bdFamilyNames]));
 
 const commonNames = [...baseCommonNames, ...bangladeshiNames];
 
@@ -90,32 +100,78 @@ const baseCommonLocations = [
     'athens', 'lisbon', 'prague', 'warsaw', 'budapest', 'bucharest', 'sofia', 'belgrade', 'zagreb'
 ];
 
-const bangladeshiLocations = [
-    // Country and divisions
+const bdDivisions = [
     'bangladesh', 'dhaka division', 'chattogram division', 'rajshahi division', 'khulna division',
-    'barishal division', 'sylhet division', 'rangpur division', 'mymensingh division',
-    // Districts (64)
-    'bagerhat', 'bandarban', 'barguna', 'barishal', 'barisal', 'bhola', 'bogura', 'brahmanbaria',
-    'chandpur', 'chapainawabganj', 'chattogram', 'chuadanga', 'cox\'s bazar', 'coxs bazar', 'cumilla',
-    'comilla', 'dhaka', 'dinajpur', 'faridpur', 'feni', 'gaibandha', 'gazipur', 'gopalganj',
-    'habiganj', 'jamalpur', 'jashore', 'jessore', 'jhalokathi', 'jhalakathi', 'jhenaidah', 'joypurhat',
-    'khagrachari', 'khagrachhari', 'khulna', 'kishoreganj', 'kurigram', 'kushtia', 'lakshmipur',
-    'lalmonirhat', 'madaripur', 'magura', 'manikganj', 'meherpur', 'moulvibazar', 'munshiganj',
-    'mymensingh', 'naogaon', 'narail', 'narayanganj', 'narsingdi', 'natore', 'nawabganj', 'netrokona',
-    'nilphamari', 'noakhali', 'pabna', 'panchagarh', 'patuakhali', 'piroijpur', 'pirojpur', 'rajbari',
-    'rajshahi', 'rangamati', 'rangpur', 'satkhira', 'shariatpur', 'sherpur', 'sirajganj', 'sunamganj',
-    'sylhet', 'tangail', 'thakurgaon',
-    // Major cities and towns
-    'dhaka city', 'chattogram city', 'khulna city', 'rajshahi city', 'barishal city', 'sylhet city',
-    'rangpur city', 'mymensingh city', 'gazipur city', 'narayanganj city', 'cumilla city', 'bogura city',
-    'jashore city', 'noakhali town', 'feni town', 'pabna town', 'satkhira town', 'manikganj town',
-    // Notable suburbs and landmarks
-    'uttara', 'mirpur', 'banani', 'gulshan', 'dhanmondi', 'motijheel', 'badda', 'keraniganj', 'savar',
-    'ashulia', 'tonggi', 'tongi', 'narshingdi', 'uttarkhan', 'dakshinkhan', 'joydebpur', 'bhairab',
-    'mawa', 'sonargaon', 'patenga', 'agrabad', 'khulshi', 'halishahar'
+    'barishal division', 'sylhet division', 'rangpur division', 'mymensingh division'
 ];
 
+const bdDistricts = [
+    'bagerhat', 'bandarban', 'barguna', 'barishal', 'barisal', 'bhola', 'bogura', 'brahmanbaria', 'chandpur',
+    'chapainawabganj', 'chattogram', 'chuadanga', 'cox\'s bazar', 'coxs bazar', 'cumilla', 'comilla', 'dhaka',
+    'dinajpur', 'faridpur', 'feni', 'gaibandha', 'gazipur', 'gopalganj', 'habiganj', 'jamalpur', 'jashore', 'jessore',
+    'jhalokathi', 'jhalakathi', 'jhenaidah', 'joypurhat', 'khagrachari', 'khagrachhari', 'khulna', 'kishoreganj',
+    'kurigram', 'kushtia', 'lakshmipur', 'lalmonirhat', 'madaripur', 'magura', 'manikganj', 'meherpur', 'moulvibazar',
+    'munshiganj', 'mymensingh', 'naogaon', 'narail', 'narayanganj', 'narsingdi', 'natore', 'nawabganj', 'netrokona',
+    'nilphamari', 'noakhali', 'pabna', 'panchagarh', 'patuakhali', 'piroijpur', 'pirojpur', 'rajbari', 'rajshahi',
+    'rangamati', 'rangpur', 'satkhira', 'shariatpur', 'sherpur', 'sirajganj', 'sunamganj', 'sylhet', 'tangail',
+    'thakurgaon'
+];
+
+const bdMajorCities = [
+    'dhaka city', 'uttara', 'mirpur', 'banani', 'gulshan', 'dhanmondi', 'motijheel', 'badda', 'keraniganj', 'savar',
+    'ashulia', 'tongi', 'joydebpur', 'gazipur city', 'narayanganj city', 'cumilla city', 'bogura city',
+    'mymensingh city', 'khulna city', 'rajshahi city', 'barishal city', 'sylhet city', 'rangpur city',
+    'chattogram city', 'agrabad', 'patenga', 'khulshi', 'halishahar', 'noakhali town', 'feni town', 'pabna town',
+    'satkhira town', 'manikganj town', 'uttarkhan', 'dakshinkhan', 'bhatara', 'banasree', 'nikunja', 'bashundhara',
+    'mogbazar', 'mawa', 'sonargaon', 'bhairab'
+];
+
+const bdUpazilasAndAreas = [
+    'adamdighi', 'ajmiriganj', 'akhaura', 'amtali', 'anwara', 'astagram', 'bajitpur', 'baksiganj', 'bamna', 'bancharampur',
+    'beanibazar', 'belkuchi', 'bhairab', 'bhandaria', 'bheramara', 'bhola sadar', 'bholahat', 'bishwanath', 'boalmari',
+    'chakaria', 'charfashion', 'charfesson', 'charghat', 'chatkhil', 'chilmari', 'companiganj', 'daulatkhan', 'daulatpur',
+    'debiganj', 'derai', 'dhamrai', 'dhanbari', 'dimla', 'dohar', 'fulbaria', 'fulchhari', 'gafargaon', 'gajaria',
+    'gopalpur', 'gouripur', 'hathazari', 'hili', 'hizla', 'ishwardi', 'ishwarganj', 'jaldhaka', 'kaliganj', 'kalihati',
+    'kalia', 'kaptai', 'kasba', 'kawkhali', 'kendua', 'kishoreganj sadar', 'kurigram sadar', 'lalmohan', 'langadu',
+    'lohagara', 'mathbaria', 'melandaha', 'mirsharai', 'nakla', 'nalitabari', 'naniarchar', 'paikgachha', 'palash',
+    'parbatipur', 'pirganj', 'raipur', 'rajnagar', 'ramganj', 'ramgati', 'rampal', 'raninagar', 'sarail', 'senbag',
+    'sherpur sadar', 'sonatola', 'sreepur', 'subarnachar', 'sundarganj', 'tala', 'tarakanda', 'trishal', 'ulipur', 'wazirpur'
+];
+
+const bdLandmarks = [
+    'jatio sangsod bhaban', 'sadarghat', 'lalbagh fort', 'ahsan manjil', 'bahadur shah park', 'hatirjheel', 'martyr memorial',
+    'suhrawardy uddan', 'shaheed minar', 'bangabandhu sheikh mujib safari park', 'jaflong', 'ratargul swamp forest',
+    'sajek valley', 'nijhum dwip', 'st martin\'s island', 'kuakata', 'paharpur', 'mahasthangarh', 'bagerhat sixty dome mosque',
+    'somapura mahavihara', 'ramna park', 'new market dhaka'
+];
+
+const bangladeshiLocations = Array.from(new Set([
+    ...bdDivisions,
+    ...bdDistricts,
+    ...bdMajorCities,
+    ...bdUpazilasAndAreas,
+    ...bdLandmarks
+]));
+
 const commonLocations = [...baseCommonLocations, ...bangladeshiLocations];
+
+const bangladeshiCulturalTerms = [
+    // Foods
+    'kacchi biryani', 'kachchi biryani', 'morog polao', 'tehari', 'bhuna khichuri', 'khichuri', 'shorshe ilish',
+    'ilish bhuna', 'ilish fry', 'hilsha fry', 'ilish pulao', 'beef bhuna', 'beef rezala', 'beef kala bhuna',
+    'mutton kosha', 'chicken roast', 'chaap', 'akhni pulao', 'shahi tukra', 'firni', 'falooda', 'borhani', 'lachcha semai',
+    'shemai', 'pitha', 'bhapa pitha', 'pati shapta', 'patishapta', 'chitoi pitha', 'nakshi pitha', 'narkel naaru',
+    'narikel nadu', 'chomchom', 'roshogolla', 'malai chomchom', 'mihidana', 'sandesh', 'mishti doi', 'kheer', 'payesh',
+    'fuchka', 'phuchka', 'chotpoti', 'halim', 'bakarkhani', 'biscuit ruti', 'shingaras', 'singara', 'kachori', 'paratha',
+    'naan ruti', 'shuti kabab', 'chapli kabab', 'shorshe shutki', 'bhorta', 'alu bhorta', 'begun bhorta', 'shutki bhorta',
+    // Festivals and culture
+    'pohela boishakh', 'pahela baishakh', 'nobanno', 'ekushey february', 'amar ekushey', 'language movement day',
+    'bijoy dibosh', 'victory day bangladesh', 'independence day bangladesh', 'eid ul fitr', 'eid ul adha', 'boishakhi mela',
+    'durga puja', 'budhha purnima', 'lokkhi puja', 'rash mela',
+    // Clothing and crafts
+    'jamdani', 'muslin', 'nakshi kantha', 'gamchha', 'fatuwa', 'punjabi', 'kurta', 'salwar kameez', 'orna', 'lungi',
+    'tanta sari', 'banarasi saree'
+];
 
 // ========================================
 // MAIN FUNCTION - Process the text
@@ -206,6 +262,9 @@ function findAllEntities(text) {
     
     // Find locations
     findLocations(text);
+    
+    // Find Bangladeshi cultural terms (foods, festivals, clothing)
+    findBangladeshiCulturalTerms(text);
     
     // Remove duplicates and overlaps
     removeDuplicates();
@@ -395,6 +454,33 @@ function findLocations(text) {
                 startIndex: locationStart,
                 endIndex: locationEnd
             });
+        }
+    }
+}
+
+function findBangladeshiCulturalTerms(text) {
+    let lowerText = text.toLowerCase();
+    
+    for (let term of bangladeshiCulturalTerms) {
+        let lowerTerm = term.toLowerCase();
+        let searchIndex = 0;
+        let foundIndex;
+        
+        while ((foundIndex = lowerText.indexOf(lowerTerm, searchIndex)) !== -1) {
+            let before = foundIndex > 0 ? lowerText[foundIndex - 1] : ' ';
+            let after = foundIndex + lowerTerm.length < lowerText.length ? 
+                        lowerText[foundIndex + lowerTerm.length] : ' ';
+            
+            if (!/[a-z]/.test(before) && !/[a-z]/.test(after)) {
+                detectedEntities.push({
+                    type: 'BN_CULTURE',
+                    text: text.substring(foundIndex, foundIndex + term.length),
+                    startIndex: foundIndex,
+                    endIndex: foundIndex + term.length
+                });
+            }
+            
+            searchIndex = foundIndex + lowerTerm.length;
         }
     }
 }
